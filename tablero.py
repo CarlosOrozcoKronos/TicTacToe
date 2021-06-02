@@ -1,8 +1,4 @@
-# CONSTANTES
-O = -1
-BLANCK = 0
-x = 1
-FICHAS = ["O", " ", "X"]
+import constantes as CONSTANTES
 
 
 class Tablero:
@@ -15,9 +11,9 @@ class Tablero:
     """
 
     def __init__(self):
-        self.tablero = [[BLANCK, BLANCK, BLANCK],
-                        [BLANCK, BLANCK, BLANCK],
-                        [BLANCK, BLANCK, BLANCK]]
+        self.tablero = [[CONSTANTES.BLANCK, CONSTANTES.BLANCK, CONSTANTES.BLANCK],
+                        [CONSTANTES.BLANCK, CONSTANTES.BLANCK, CONSTANTES.BLANCK],
+                        [CONSTANTES.BLANCK, CONSTANTES.BLANCK, CONSTANTES.BLANCK]]
 
     def getXYDePosicion(self, posicion):
         posx = (posicion % 3) - 1
@@ -46,10 +42,10 @@ class Tablero:
         """
         devuelve el valor numerico de la ficha o su simbolo
         """
-        if ficha in FICHAS:
-            return (FICHAS.index(ficha) - 1)
-        elif (ficha + 1) in range(len(FICHAS)):
-            return FICHAS[ficha + 1]
+        if ficha in CONSTANTES.FICHAS:
+            return (CONSTANTES.FICHAS.index(ficha) - 1)
+        elif (ficha + 1) in range(len(CONSTANTES.FICHAS)):
+            return CONSTANTES.FICHAS[ficha + 1]
         raise Exception("Ficha no valida")
 
     def mostrarTablero(self):
