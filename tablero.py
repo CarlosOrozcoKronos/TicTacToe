@@ -54,7 +54,7 @@ class Tablero:
     def mostrarTablero(self):
         print()
         for linea in self.tablero:
-            print(f"{linea[0]}|{linea[1]}|{linea[2]}")
+            print(f"{self.traducirFicha(linea[0])}|{self.traducirFicha(linea[1])}|{self.traducirFicha(linea[2])}")
 
     def getCasillasVacias(self):
         """
@@ -66,9 +66,8 @@ class Tablero:
         for linea in self.tablero:
             x = 0
             for casilla in linea:
-                vacias.append(self.getPosicionDeXY(x, y))
+                if casilla is CONSTANTES.BLANCK:
+                    vacias.append(self.getPosicionDeXY(x, y))
                 x += 1
             y += 1
         return(vacias)
-
-                
