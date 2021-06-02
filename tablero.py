@@ -27,6 +27,9 @@ class Tablero:
         return (posy, posx)
 
     def getPosicionDeXY(self, posX, posY):
+        """
+        donde X es la casilla e Y es la linea
+        """
         posicion = (posX + 1) + posY * 3
         return posicion
 
@@ -35,7 +38,7 @@ class Tablero:
         ficha = X o O
         posicion numero de 1 a 9
         """
-        YX = self.getXYDePosicion(posicion)
+        YX = self.getXYDePosicion(int(posicion))
         self.tablero[YX[0]][YX[1]] = self.traducirFicha(ficha)
 
     def traducirFicha(self, ficha):
@@ -52,3 +55,20 @@ class Tablero:
         print()
         for linea in self.tablero:
             print(f"{linea[0]}|{linea[1]}|{linea[2]}")
+
+    def getCasillasVacias(self):
+        """
+        tambien se puede contar hasta turno 9, esto valdria para tableros
+        de mas de 3X3
+        """
+        y = 0
+        vacias = []
+        for linea in self.tablero:
+            x = 0
+            for casilla in linea:
+                vacias.append(self.getPosicionDeXY(x, y))
+                x += 1
+            y += 1
+        return(vacias)
+
+                
