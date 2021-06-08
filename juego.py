@@ -18,19 +18,26 @@ class Juego:
         return jugadorXO.jugada(self.turno, self, self.tablero)
 
     def turnoLooper(self):
-        while (not self.gameOver()):
+        ficha = None
+        while (not self.gameOver(ficha)):
             self.turno += 1
             if self.turno % 2:
-                self.tablero.insertarFicha(self.jugador1.ficha, self.pedirJugada(self.jugador1))
+                ficha = self.jugador1.ficha
+                self.tablero.insertarFicha(ficha, self.pedirJugada(self.jugador1))
             else:
-                self.tablero.insertarFicha(self.jugador2.ficha, self.pedirJugada(self.jugador2))
+                ficha = self.jugador2.ficha
+                self.tablero.insertarFicha(ficha, self.pedirJugada(self.jugador2))
             self.tablero.mostrarTablero()
 
-    def ganado(self):
+    def ganado(self, ficha):
+        if self.tablero.linea(ficha) or self.tablero.columna(ficha) or self.tablero.diagonal(ficha):
+            return True
         return False
 
-    def gameOver(self):
-        if self.turno >= 9 or self.ganado():
+    def gameOver(self, ficha):
+        if ficha is None :
+            return False
+        if self.turno >= 9 or self.ganado(ficha):
             print("GAME OVER")
             return True
         return False

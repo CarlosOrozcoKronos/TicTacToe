@@ -71,3 +71,43 @@ class Tablero:
                 x += 1
             y += 1
         return(vacias)
+
+    def linea(self, ficha):
+        for linea in self.tablero:
+            suma = 0
+            for casilla in linea:
+                suma += casilla
+            if suma == (self.traducirFicha(ficha)*3):
+                return True
+        return False
+
+    def columna(self, ficha):
+        suma = []
+        for linea in self.tablero:
+            suma.append(0)
+        for linea in self.tablero:
+            i = 0
+            for casilla in linea:
+                suma [i] += casilla
+                i += 1
+        if (self.traducirFicha(ficha)*3) in suma:
+            return True
+        return False
+
+    def diagonal(self, ficha):
+        sumaDiagPositiva = 0
+        sumaDiagNegativa = 0
+        j = 0
+        for linea in self.tablero:
+            i = 0
+            for casilla in linea:
+                # Calcular primera, media y ultima
+                if i == j :
+                    sumaDiagPositiva += casilla
+                if j == ((len(linea)-1) - i):
+                    sumaDiagNegativa += casilla
+                i += 1
+            j += 1
+        if sumaDiagPositiva == (self.traducirFicha(ficha)*3) or sumaDiagNegativa == (self.traducirFicha(ficha)*3) :
+            return True
+        return False
