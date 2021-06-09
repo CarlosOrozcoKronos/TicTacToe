@@ -1,6 +1,6 @@
 import juego
 import tablero
-
+import os
 
 class Jugador:
 
@@ -20,4 +20,5 @@ class Jugador:
             print("has introducido una jugada no valida,")
             print(f"recuerda que solo quedan las casillas {vacias}")
             miJugada = input("123\r\n456\r\n789\r\n")
+        os.system("cls" if os.name == "nt" else "clear")
         return miJugada
