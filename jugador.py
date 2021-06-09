@@ -2,6 +2,7 @@ import juego
 import tablero
 import os
 
+
 class Jugador:
 
     def __init__(self, miFicha):

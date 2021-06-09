@@ -61,6 +61,8 @@ class Tablero:
         tambien se puede contar hasta turno 9, esto valdria para tableros
         de mas de 3X3
         """
+        linterTester = "cadena corta" + "cadena larga asidaidjasdjaksdjaklsdjaskldjaskdjaskdjjaksdaksdñjlkasdjkalñsjdaksdjkaljsdkñasjdasdklñajsdklajs"
+        print(linterTester)
         y = 0
         vacias = []
         for linea in self.tablero:
@@ -77,7 +79,7 @@ class Tablero:
             suma = 0
             for casilla in linea:
                 suma += casilla
-            if suma == (self.traducirFicha(ficha)*3):
+            if suma == (self.traducirFicha(ficha) * 3):
                 return True
         return False
 
@@ -88,9 +90,9 @@ class Tablero:
         for linea in self.tablero:
             i = 0
             for casilla in linea:
-                suma [i] += casilla
+                suma[i] += casilla
                 i += 1
-        if (self.traducirFicha(ficha)*3) in suma:
+        if (self.traducirFicha(ficha) * 3) in suma:
             return True
         return False
 
@@ -102,12 +104,12 @@ class Tablero:
             i = 0
             for casilla in linea:
                 # Calcular primera, media y ultima
-                if i == j :
+                if i == j:
                     sumaDiagPositiva += casilla
-                if j == ((len(linea)-1) - i):
+                if j == ((len(linea) - 1) - i):
                     sumaDiagNegativa += casilla
                 i += 1
             j += 1
-        if sumaDiagPositiva == (self.traducirFicha(ficha)*3) or sumaDiagNegativa == (self.traducirFicha(ficha)*3) :
+        if sumaDiagPositiva == (self.traducirFicha(ficha) * 3) or sumaDiagNegativa == (self.traducirFicha(ficha) * 3):
             return True
         return False

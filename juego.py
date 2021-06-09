@@ -35,7 +35,7 @@ class Juego:
         return False
 
     def gameOver(self, ficha):
-        if ficha is None :
+        if ficha is None:
             return False
         if self.turno >= 9 or self.ganado(ficha):
             print("GAME OVER")
